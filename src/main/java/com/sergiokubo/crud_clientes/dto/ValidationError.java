@@ -13,6 +13,7 @@ public class ValidationError extends CustomError{
         super(timestamp, status, error, path);
     }
 
+
     public List<FieldMessage> getErrors() {
         return errors;
     }

@@ -1,26 +1,26 @@
 package com.sergiokubo.crud_clientes.dto;
 
 import com.sergiokubo.crud_clientes.entities.Client;
-import jakarta.validation.constraints.*;
-import org.hibernate.validator.constraints.UniqueElements;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
-    @NotBlank(message = "Campo requerido")
+    @NotBlank(message = "Não pode ser vazio")
     private String name;
     private String cpf;
-    @Positive(message = "A renda deve ser positivo")
+    @Positive(message = "A renda deve ser positiva")
     private Double income;
-    @PastOrPresent(message = "Data precisa ser anterior ou igual a data de hoje")
+    @PastOrPresent(message = "Não pode ser data futura")
     private LocalDate birthDate;
-    @PositiveOrZero(message = "A quantidade de filhos deve ser zero ou mais")
+    @PositiveOrZero(message = "A quantidade de filhos deve ser maior ou igual a zero")
     private Integer children;
 
-    public ClientDTO(){
-    }
 
     public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
